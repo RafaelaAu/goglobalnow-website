@@ -12,7 +12,7 @@ export default function MobileStickyBar() {
       className="fixed bottom-0 left-0 right-0 z-40 lg:hidden bg-white border-t border-[#E7E5E4] shadow-2xl"
       style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
     >
-      <div className="grid grid-cols-3 gap-1 p-2">
+      <div className="grid grid-cols-3 gap-1 p-2 pr-44 sm:pr-2">
         <a
           href="tel:+61280029276"
           data-testid="mobile-call"

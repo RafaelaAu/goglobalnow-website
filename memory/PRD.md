@@ -50,8 +50,14 @@ A premium, conversion-optimised education-agency website for **Go Global Now** �
 - **P2**: Integrate Stripe for paid services (visa application, premium consultation)
 - **P2**: Live chat handoff from Aussie AI to human agent
 
-## Next Tasks (Iteration 2 — completed 2025-12)
-- ✅ Uploaded logo integrated into Header + Footer
-- ✅ EN/PT language toggle with localStorage persistence (covers Header, Footer, Home, Contact)
-- ✅ Cost Calculator quiz (4 steps + email capture) on homepage — lead saves to /api/inquiries with [QUIZ] tag
+## Iteration 3 (2025-12)
+- ✅ Urgency countdown banner inside header (live next-intake countdown, dynamic Feb/Jul dates)
+- ✅ Partner universities marquee with scrolling animation
+- ✅ Work & Study section (visa work rights, AUD $24.95 min wage)
+- ✅ Application Pathway 5-step interactive timeline (desktop) + vertical (mobile)
+- ✅ Scholarship Spotlight with 3 gradient scholarship cards
+- ✅ Mobile sticky bottom CTA bar (Call / WhatsApp / Book)
+- ✅ Cost quiz refined with Study Australia rent ranges per city + official calculator link
+- ✅ SEO meta tags (OG, Twitter, keywords, real title)
+
 
