@@ -1,0 +1,117 @@
+{
+  "theme": "light",
+  "archetype": "1_and_3_Hybrid_Aspirational_Premium",
+  "design_philosophy": "Aspirational Wanderlust meets Premium Education Trust. Target is Brazilian/Latino youth (16-30). Blend the editorial elegance of high-end travel (Godly-style) with the approachability and trust of a certified education agency. Avoid corporate sterility. Use magazine-like typography, generous whitespace, and sectioned storytelling.",
+  "colors": {
+    "background": "#F9F8F6",
+    "surface": "#FFFFFF",
+    "surface_subtle": "#F3F2EE",
+    "primary": "#003B5C",
+    "primary_hover": "#002940",
+    "secondary": "#F59E0B",
+    "secondary_hover": "#D97706",
+    "text_primary": "#1C1917",
+    "text_secondary": "#57534E",
+    "border": "#E7E5E4"
+  },
+  "typography": {
+    "heading_font": "Cormorant Garamond",
+    "body_font": "Outfit",
+    "rules": {
+      "h1": "text-5xl sm:text-6xl tracking-tight leading-none font-medium",
+      "h2": "text-4xl sm:text-5xl tracking-tight leading-tight font-medium",
+      "h3": "text-2xl sm:text-3xl tracking-tight font-medium",
+      "body": "text-base sm:text-lg leading-relaxed text-text_secondary",
+      "overline": "uppercase text-xs sm:text-sm tracking-[0.2em] font-bold text-primary"
+    }
+  },
+  "layout_and_spacing": {
+    "spacing_scale": "p-4, p-8, p-12, p-16, p-24 (use generous padding, 2-3x typical)",
+    "grid_strategy": "MODE A: TETRIS GRID for Marketing. Use asymmetrical bento grids for 'Top 5 Destinations' and 'Programs'. Never perfectly symmetrical.",
+    "border_radius": "rounded-2xl to rounded-3xl for soft approachability"
+  },
+  "surfaces_and_effects": {
+    "hero_overlay": "bg-black/30 to bg-black/40 (keep images vibrant and visible)",
+    "glassmorphism": "backdrop-blur-xl bg-white/70 border-b border-white/40 for sticky header",
+    "cards": "Flat background (surface_subtle), 1px subtle border, hover:-translate-y-1 hover:shadow-xl transition-all duration-300"
+  },
+  "media": {
+    "hero": {
+      "url": "https://images.unsplash.com/photo-1561488111-5d800fd56b8a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1Mjh8MHwxfHNlYXJjaHwyfHxzeWRuZXklMjBhdXN0cmFsaWElMjBza3lsaW5lJTIwc3Vuc2V0fGVufDB8fHx8MTc3ODgyNjEyOHww&ixlib=rb-4.1.0&q=85",
+      "alt": "Sydney Opera House and Skyline at sunset",
+      "instructions": "Full width hero, minimal overlay (max black/40). Use Cormorant Garamond for the massive H1."
+    },
+    "students": {
+      "url": "https://images.unsplash.com/photo-1772724317387-7e763804b637?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxOTB8MHwxfHNlYXJjaHw0fHxoYXBweSUyMGRpdmVyc2UlMjBpbnRlcm5hdGlvbmFsJTIwY29sbGVnZSUyMHN0dWRlbnRzJTIwbGF1Z2hpbmd8ZW58MHx8fHwxNzc4ODI2MTI4fDA&ixlib=rb-4.1.0&q=85",
+      "alt": "Diverse happy international students",
+      "instructions": "Use in 'Why Choose Us' or 'Testimonials' section as an aspirational anchor."
+    },
+    "destinations": {
+      "gold_coast": "https://images.unsplash.com/photo-1626070191915-0ae0d9089132?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA3MDR8MHwxfHNlYXJjaHwzfHxnb2xkJTIwY29hc3QlMjBhdXN0cmFsaWElMjBiZWF1dGlmdWwlMjBiZWFjaHxlbnwwfHx8fDE3Nzg4MjYxMjh8MA&ixlib=rb-4.1.0&q=85",
+      "sydney": "https://images.unsplash.com/photo-1687443105981-69e550f59fea?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1Mjh8MHwxfHNlYXJjaHwxfHxzeWRuZXklMjBhdXN0cmFsaWElMjBza3lsaW5lJTIwc3Vuc2V0fGVufDB8fHx8MTc3ODgyNjEyOHww&ixlib=rb-4.1.0&q=85"
+    }
+  },
+  "content_strategy": {
+    "brand_name": "Go Global Now",
+    "hero": {
+      "headline": "Estude e Trabalhe na Austrália",
+      "subheadline": "Sua Jornada Educacional Global Começa Aqui. Agentes Especializados do Brasil para a Austrália.",
+      "primary_cta": "Book Free Consultation",
+      "secondary_cta": "WhatsApp Us"
+    },
+    "programs": [
+      {
+        "title": "English Language Courses (ELICOS)",
+        "description": "General English, Academic Purposes, IELTS/Cambridge Prep, Business English"
+      },
+      {
+        "title": "Vocational Education (VET)",
+        "description": "Practical, career-focused courses in Business, IT, Nursing, Engineering, Design"
+      },
+      {
+        "title": "High School Programs",
+        "description": "For international students 12-18 years old in public and private schools"
+      },
+      {
+        "title": "Higher Education",
+        "description": "Bachelors, Masters, PhDs, and Graduate Diplomas"
+      }
+    ],
+    "destinations": [
+      "Sydney (Iconic & Multicultural)",
+      "Melbourne (Creative & Dynamic)",
+      "Brisbane (Warm & Welcoming)",
+      "Gold Coast (Beaches & Lifestyle)",
+      "Perth (Booming & Beautiful)"
+    ],
+    "trust_signals": [
+      "QEAC Certified Agents",
+      "Personalised Support",
+      "Ethical Guidance"
+    ],
+    "contact": {
+      "whatsapp": "+61 280029276",
+      "email": "contact@goglobalnow.com.au",
+      "address": "Kurrajong Street 2232 Sydney Australia"
+    }
+  },
+  "component_guidelines": {
+    "libraries_to_install": [
+      "lucide-react",
+      "framer-motion",
+      "react-hook-form",
+      "zod",
+      "@hookform/resolvers/zod"
+    ],
+    "marketing_sections": "Use raw HTML/Tailwind for creative asymmetry. Avoid Shadcn Cards for purely visual layout.",
+    "interactive_elements": "Use Shadcn UI for the multi-step Inquiry Form, Datepicker (Consultation Booking), Accordion (FAQ), and Input fields. Strictly customize Shadcn borders and radii to match rounded-2xl style.",
+    "navigation": "Sticky header with Crystal Glass effect. Desktop links must be visible, mobile uses hamburger.",
+    "chatbot": "Floating UI widget in bottom right (Shadcn Dialog/Popover) for Claude AI Chatbot.",
+    "whatsapp_button": "Sticky floating button on bottom left using brand green or secondary accent (#F59E0B) for high conversion.",
+    "admin_dashboard": "Clean layout (Archetype 4 style) specifically for /admin route to view submitted inquiries."
+  },
+  "testing_requirements": {
+    "data_testid": "MANDATORY. Every button, form input, form submit button, accordion, and link MUST have a role-based data-testid attribute. E.g., data-testid='hero-book-consultation', data-testid='whatsapp-float', data-testid='inquiry-form-submit', data-testid='inquiry-email-input'."
+  },
+  "instructions_to_main_agent": "Implement a full stack hybrid application. Main marketing site features high-end editorial visuals. Use exact media URLs provided above. Integrate a complete multi-step form for lead capture, a calendar/datepicker for consultation, and an admin dashboard to view leads. All interactive components must use data-testid. Font choices must match Cormorant Garamond and Outfit."
+}
