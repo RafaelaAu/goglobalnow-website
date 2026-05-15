@@ -146,7 +146,7 @@ def inquiry_student_email_html(inq: dict) -> str:
         <h2 style="margin:0 0 16px; color:#003B5C;">Hi {inq.get('full_name')},</h2>
         <p style="line-height:1.6;">Thank you for reaching out to Go Global Now. We've received your inquiry about <strong>{inq.get('program_interest')}</strong> in Australia.</p>
         <p style="line-height:1.6;">One of our QEAC certified education agents will contact you within 24 hours to discuss your goals and the best pathway for you.</p>
-        <p style="margin:24px 0; padding:16px; background:#F9F8F6; border-left:4px solid #F59E0B;">In the meantime, you can WhatsApp us at <strong>+61 280029276</strong> for instant support.</p>
+        <p style="margin:24px 0; padding:16px; background:#F9F8F6; border-left:4px solid #F59E0B;">In the meantime, you can WhatsApp us at <strong>+61 401 864 097</strong> for instant support.</p>
         <p style="color:#57534E; font-size:14px;">— Go Global Now Team<br/>Sydney, Australia</p>
       </td></tr>
     </table>
@@ -234,7 +234,7 @@ You help with:
 - Top destinations: Sydney, Melbourne, Brisbane, Gold Coast, Perth
 - Cost of living, study + work rights (48 hrs/fortnight)
 
-Tone: warm, encouraging, concise (2-4 short paragraphs max). End every response by inviting the student to book a free consultation or WhatsApp +61 280029276 for personalised advice. If a question is outside Australia study, gently redirect.
+Tone: warm, encouraging, concise (2-4 short paragraphs max). End every response by inviting the student to book a free consultation or WhatsApp +61 401 864 097 for personalised advice. If a question is outside Australia study, gently redirect.
 
 Always recommend they speak with a QEAC certified agent for personalised visa/course advice."""
 

@@ -47,7 +47,7 @@ export default function Footer() {
           <h4 className="font-display text-lg mb-4 text-[#F59E0B]">{t("footer.contact")}</h4>
           <ul className="space-y-3 text-sm text-white/80">
             <li className="flex gap-2"><MapPin className="w-4 h-4 flex-shrink-0 mt-0.5" /> Kurrajong Street, 2232 Sydney, Australia</li>
-            <li className="flex gap-2"><Phone className="w-4 h-4 flex-shrink-0 mt-0.5" /> +61 280029276 (AU)<br />+51 2199501-6925 (BR)</li>
+            <li className="flex gap-2"><Phone className="w-4 h-4 flex-shrink-0 mt-0.5" /> +61 401 864 097 (AU)<br />+51 2199501-6925 (BR)</li>
             <li className="flex gap-2"><Mail className="w-4 h-4 flex-shrink-0 mt-0.5" /> contact@goglobalnow.com.au</li>
           </ul>
           <div className="flex gap-3 mt-4">

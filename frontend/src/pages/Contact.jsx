@@ -40,7 +40,7 @@ export default function Contact() {
             <ContactCard
               icon={Phone}
               title={t("contact.call")}
-              lines={["+61 280029276 (Australia)", "+51 2199501-6925 (Brazil)"]}
+              lines={["+61 401 864 097 (Australia)", "+51 2199501-6925 (Brazil)"]}
             />
             <ContactCard
               icon={Mail}
@@ -48,7 +48,7 @@ export default function Contact() {
               lines={["contact@goglobalnow.com.au", "support@goglobalnow.com.au"]}
             />
             <a
-              href="https://wa.me/61280029276"
+              href="https://wa.me/61401864097"
               target="_blank"
               rel="noopener noreferrer"
               data-testid="contact-whatsapp"
@@ -130,7 +130,7 @@ function InquiryForm() {
         </div>
         <h3 className="font-display text-3xl text-[#003B5C] mb-3">You're all set, {data.full_name.split(" ")[0]}!</h3>
         <p className="text-[#57534E] mb-6">A QEAC certified agent will contact you within 24 hours.</p>
-        <a href="https://wa.me/61280029276" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#25D366] text-white hover:bg-[#1da851]">
+        <a href="https://wa.me/61401864097" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#25D366] text-white hover:bg-[#1da851]">
           WhatsApp us for instant chat <ArrowRight className="w-4 h-4" />
         </a>
       </div>

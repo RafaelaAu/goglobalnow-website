@@ -118,7 +118,7 @@ export default function Home() {
                 {t("cta.book_consultation")} <ArrowRight className="w-4 h-4" />
               </Link>
               <a
-                href="https://wa.me/61280029276"
+                href="https://wa.me/61401864097"
                 target="_blank"
                 rel="noopener noreferrer"
                 data-testid="hero-whatsapp"
@@ -344,11 +344,11 @@ export default function Home() {
                 {t("cta.book_consultation")} <ArrowRight className="w-4 h-4" />
               </Link>
               <a
-                href="tel:+61280029276"
+                href="tel:+61401864097"
                 data-testid="cta-call"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-white/10 border border-white/30 text-white font-medium hover:bg-white/20"
               >
-                {t("cta.call")} +61 280029276
+                {t("cta.call")} +61 401 864 097
               </a>
             </div>
           </div>

@@ -14,7 +14,7 @@ export default function MobileStickyBar() {
     >
       <div className="grid grid-cols-3 gap-1 p-2 pr-44 sm:pr-2">
         <a
-          href="tel:+61280029276"
+          href="tel:+61401864097"
           data-testid="mobile-call"
           className="flex flex-col items-center justify-center gap-1 py-2 rounded-xl text-[#003B5C] hover:bg-[#F3F2EE]"
         >
@@ -22,7 +22,7 @@ export default function MobileStickyBar() {
           <span className="text-[10px] font-medium uppercase tracking-wider">{isPt ? "Ligar" : "Call"}</span>
         </a>
         <a
-          href="https://wa.me/61280029276"
+          href="https://wa.me/61401864097"
           target="_blank"
           rel="noopener noreferrer"
           data-testid="mobile-wa"

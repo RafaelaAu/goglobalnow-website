@@ -42,7 +42,7 @@ export default function ChatWidget() {
       });
       setMessages((m) => [...m, { role: "assistant", content: res.data.response }]);
     } catch (e) {
-      setMessages((m) => [...m, { role: "assistant", content: "Sorry, I'm having trouble right now. Please WhatsApp us at +61 280029276." }]);
+      setMessages((m) => [...m, { role: "assistant", content: "Sorry, I'm having trouble right now. Please WhatsApp us at +61 401 864 097." }]);
     }
     setLoading(false);
   };

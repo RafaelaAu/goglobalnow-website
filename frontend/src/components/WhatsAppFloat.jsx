@@ -2,7 +2,7 @@ import { MessageCircle } from "lucide-react";
 
 export default function WhatsAppFloat() {
   const message = encodeURIComponent("Hi! I'd like to know more about studying in Australia.");
-  const href = `https://wa.me/61280029276?text=${message}`;
+  const href = `https://wa.me/61401864097?text=${message}`;
 
   return (
     <a
