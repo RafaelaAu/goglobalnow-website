@@ -1,4 +1,5 @@
 import { MessageCircle } from "lucide-react";
+import { trackEvent } from "../lib/analytics";
 
 export default function WhatsAppFloat() {
   const message = encodeURIComponent("Hi! I'd like to know more about studying in Australia.");
@@ -10,6 +11,7 @@ export default function WhatsAppFloat() {
       target="_blank"
       rel="noopener noreferrer"
       data-testid="whatsapp-float"
+      onClick={() => trackEvent("whatsapp_click", { source: "float" })}
       className="fixed bottom-6 left-6 z-40 w-14 h-14 rounded-full bg-[#25D366] hover:bg-[#1da851] flex items-center justify-center shadow-2xl animate-pulse-glow transition-all hover:scale-110"
       aria-label="Chat on WhatsApp"
     >

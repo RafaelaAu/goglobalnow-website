@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { toast } from "sonner";
 import { useI18n } from "../i18n";
+import { trackEvent } from "../lib/analytics";
 import { Calculator, ArrowRight, ArrowLeft, CheckCircle2, Sparkles } from "lucide-react";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
@@ -106,6 +107,13 @@ export default function CostQuiz() {
         english_level: data.english,
         intake_date: `${data.duration} year(s)`,
         message: `[QUIZ] Estimated cost: AUD $${totalAUD.toLocaleString()} (BRL R$ ${Math.round(totalBRL).toLocaleString()})`,
+      });
+      trackEvent("quiz_complete", {
+        program: data.program,
+        city: data.city,
+        duration: data.duration,
+        value: totalAUD,
+        currency: "AUD",
       });
       setSubmitted(true);
       toast.success(labels.success);

@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import { MessageSquare, X, Send, Sparkles } from "lucide-react";
+import { trackEvent } from "../lib/analytics";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
@@ -52,7 +53,7 @@ export default function ChatWidget() {
       {!open && (
         <button
           data-testid="chat-toggle"
-          onClick={() => setOpen(true)}
+          onClick={() => { setOpen(true); trackEvent("chat_open"); }}
           className="fixed bottom-24 right-6 z-[9999] flex items-center gap-2 px-5 py-3 rounded-full bg-[#003B5C] text-white shadow-2xl hover:scale-105 transition-all"
         >
           <Sparkles className="w-4 h-4 text-[#F59E0B]" />

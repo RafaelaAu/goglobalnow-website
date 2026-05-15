@@ -4,6 +4,7 @@ import { toast } from "sonner";
 import { Calendar } from "@/components/ui/calendar";
 import { format } from "date-fns";
 import { useI18n } from "../i18n";
+import { trackEvent } from "../lib/analytics";
 import {
   Mail, Phone, MapPin, MessageCircle, ArrowRight, ArrowLeft, CheckCircle2,
 } from "lucide-react";
@@ -114,6 +115,7 @@ function InquiryForm() {
     setLoading(true);
     try {
       await axios.post(`${API}/inquiries`, data);
+      trackEvent("inquiry_submit", { program: data.program_interest, destination: data.preferred_destination });
       setSubmitted(true);
       toast.success("Inquiry submitted! We'll be in touch within 24 hours.");
     } catch (e) {
@@ -291,6 +293,7 @@ function ConsultationBooking() {
         preferred_date: format(date, "yyyy-MM-dd"),
         preferred_time: time,
       });
+      trackEvent("consultation_book", { date: format(date, "yyyy-MM-dd"), time });
       setSubmitted(true);
       toast.success("Consultation booked!");
     } catch (e) {
