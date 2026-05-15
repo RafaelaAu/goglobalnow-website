@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { useI18n } from "../i18n";
+import UrgencyBanner from "./UrgencyBanner";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -29,6 +30,7 @@ export default function Header() {
         scrolled ? "glass shadow-sm" : "bg-transparent"
       }`}
     >
+      <UrgencyBanner />
       <div className="max-w-7xl mx-auto px-6 lg:px-8 h-20 flex items-center justify-between">
         <Link to="/" data-testid="brand-logo" className="flex items-center gap-3 group">
           <img src="/assets/logo.jpeg" alt="Go Global Now" className="w-12 h-12 rounded-full object-cover ring-2 ring-white/60 shadow-sm group-hover:scale-105 transition-transform" />

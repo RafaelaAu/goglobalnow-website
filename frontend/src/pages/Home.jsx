@@ -4,6 +4,10 @@ import axios from "axios";
 import { ArrowRight, Award, CheckCircle2, Globe2, Heart, Sparkles, Star } from "lucide-react";
 import { useI18n } from "../i18n";
 import CostQuiz from "../components/CostQuiz";
+import PartnerMarquee from "../components/PartnerMarquee";
+import WorkingStudying from "../components/WorkingStudying";
+import Pathway from "../components/Pathway";
+import ScholarshipSpotlight from "../components/ScholarshipSpotlight";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
@@ -145,6 +149,9 @@ export default function Home() {
         </div>
       </section>
 
+      {/* PARTNERS MARQUEE */}
+      <PartnerMarquee />
+
       {/* QUOTE */}
       <section className="py-24 lg:py-32 bg-[#F9F8F6]">
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
@@ -242,6 +249,9 @@ export default function Home() {
       {/* COST QUIZ */}
       <CostQuiz />
 
+      {/* APPLICATION PATHWAY */}
+      <Pathway />
+
       {/* DESTINATIONS */}
       <section className="py-24 bg-[#003B5C] text-white grain">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -280,21 +290,27 @@ export default function Home() {
             </h2>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
-            {testimonials.map((t, i) => (
+            {testimonials.map((tm, i) => (
               <div key={i} className="bg-white border border-[#E7E5E4] rounded-3xl p-8 card-hover" data-testid={`testimonial-${i}`}>
                 <div className="flex gap-1 mb-4">
                   {[1,2,3,4,5].map(s => <Star key={s} className="w-4 h-4 fill-[#F59E0B] text-[#F59E0B]" />)}
                 </div>
-                <p className="font-display text-xl text-[#1C1917] leading-snug mb-6">"{t.quote}"</p>
+                <p className="font-display text-xl text-[#1C1917] leading-snug mb-6">"{tm.quote}"</p>
                 <div>
-                  <div className="font-medium text-[#003B5C]">{t.name}</div>
-                  <div className="text-xs text-[#57534E] mt-1">{t.role}</div>
+                  <div className="font-medium text-[#003B5C]">{tm.name}</div>
+                  <div className="text-xs text-[#57534E] mt-1">{tm.role}</div>
                 </div>
               </div>
             ))}
           </div>
         </div>
       </section>
+
+      {/* WORK & STUDY */}
+      <WorkingStudying />
+
+      {/* SCHOLARSHIPS */}
+      <ScholarshipSpotlight />
 
       {/* FAQ */}
       <section className="py-24 bg-[#F3F2EE]">

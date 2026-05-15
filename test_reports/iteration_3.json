@@ -1,0 +1,55 @@
+{
+  "summary": "Frontend-only review of new high-conversion sections on Go Global Now home (urgency banner, partner marquee, work-while-study, application pathway, scholarship spotlight, mobile sticky bar, updated cost quiz, PT translations, SEO meta). All targeted features render and behave as specified; one SEO title issue was fixed in-place. Minor design concern about Emergent badge overlapping the mobile sticky bar's Book button.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "Mobile home (lg-hidden viewport)", "issues": ["'Made with Emergent' badge (fixed bottom-right z-9999) overlaps the 3rd button (Book / Agendar) of [data-testid=mobile-sticky-bar]. Consider adding bottom padding/margin to the sticky bar or shifting Book button left so it isn't covered."]}
+    ]
+  },
+  "test_results": {
+    "urgency-banner-visible": "PASS — [data-testid=urgency-banner] visible inside fixed header. Live countdown rendered: 'Next intake: 13 Jul 2026 — 58d 16h remaining'.",
+    "urgency-banner-close": "PASS — [data-testid=urgency-close] dismisses banner; sessionStorage 'ggn_banner_closed=1' set.",
+    "urgency-banner-pt": "PASS — PT: 'Próxima entrada: 13 Jul 2026 — 58d 16h restantes. Garanta sua vaga'.",
+    "partner-marquee-visible": "PASS — [data-testid=partner-marquee] visible, contains 'University of Sydney' and 'Monash University'. Label 'TRUSTED PARTNERS — AUSTRALIA'S LEADING INSTITUTIONS' rendered (CSS uppercase).",
+    "partner-marquee-pt": "PASS — PT label 'PARCEIROS — UNIVERSIDADES E INSTITUIÇÕES DE ELITE' rendered after switching to PT.",
+    "working-studying-visible": "PASS — [data-testid=working-studying] shows 3 cards: '48 hrs/fortnight', '∞ holidays', 'AUD $24.95 min wage/hour'.",
+    "working-studying-pt": "PASS — translated to PT (Trabalhe enquanto estuda / horas/quinzena / salário mínimo).",
+    "pathway-visible": "PASS — [data-testid=pathway] visible after Cost Quiz on home.",
+    "pathway-step-interactive": "PASS — Clicking [data-testid=pathway-step-3] updates description to 'Subclass 500 visa lodgement, OSHC health cover, accommodation and pre-departure checklist.' Active state highlights icon (bg-[#F59E0B] scale-110).",
+    "pathway-mobile-vertical": "PASS — Mobile (390px) renders vertical timeline (5 stacked rows with connecting line).",
+    "pathway-pt": "PASS — PT labels (Semana 1, Consultoria gratuita, etc.) visible.",
+    "scholarship-spotlight": "PASS — [data-testid=scholarship-spotlight] visible with [data-testid=scholarship-0/1/2] gradient cards (25%, AUD $3,000, 4 weeks free) and [data-testid=scholarship-cta].",
+    "scholarship-pt": "PASS — PT (Bolsa de Excelência Acadêmica, Pague menos. Sonhe mais alto) renders.",
+    "mobile-sticky-bar-desktop-hidden": "PASS — Hidden on lg viewport via lg:hidden class.",
+    "mobile-sticky-bar-mobile-visible": "PASS — Visible at 390px viewport with [data-testid=mobile-call] (tel:+61280029276), [data-testid=mobile-wa] (wa.me), [data-testid=mobile-book] (link to /contact).",
+    "cost-quiz-official-link": "VERIFIED IN CODE — [data-testid=quiz-official-link] present in CostQuiz.jsx (href https://costofliving.studyaustralia.gov.au). Renders on the result step after completing the quiz. Source attribution paragraph references 'studyaustralia.gov.au'.",
+    "cost-quiz-city-rent-range": "VERIFIED IN CODE — Sydney 'AUD $235-440/wk rent', Melbourne 220-420, Brisbane 195-390, Gold Coast 195-380, Perth 200-385 rendered on each city button.",
+    "seo-meta": "PARTIAL → FIXED — og:title, og:description, og:image, twitter:card, description, keywords were present in public/index.html. <title> was still 'Emergent | Fullstack App'. Updated to 'Go Global Now — Study & Work in Australia | QEAC Certified Agents'.",
+    "lint-shadowing-check": "PASS — testimonials map uses `tm` (not `t`), so the i18n `t` from useI18n is not shadowed. Home.jsx compiles cleanly."
+  },
+  "test_report_links": [],
+  "action_items": [
+    "Optional UX: shift [data-testid=mobile-sticky-bar] grid or add right-padding on small screens so the third button (Book/Agendar) is not visually overlapped by the fixed 'Made with Emergent' badge (bottom-right). Affects only mobile/tablet under lg breakpoint.",
+    "Optional polish: when the urgency banner is closed in a session, the header `glass` background may look thinner; consider re-tightening pt-28 padding on <main> dynamically — currently fine but worth review."
+  ],
+  "critical_code_review_comments": [
+    "UrgencyBanner.getNextIntake() uses Date(`${year}-02-09T00:00:00Z`) — once Feb intake passes the user sees the Jul intake; once Jul passes they see next-year Feb. Logic is correct. Counting only days+hours is good; minutes flicker every 60s.",
+    "PartnerMarquee duplicates the partners array twice for infinite scroll — animate-marquee in index.css must translate -50% for seamless loop (verify CSS keyframes).",
+    "Pathway interactivity is desktop-only (mobile shows all descriptions inline). This is intentional and acceptable for the timeline pattern.",
+    "MobileStickyBar uses tel:/wa.me hard-coded numbers; consider moving to a constants/config file for easier updates.",
+    "index.html <title> tag was the default Emergent placeholder — fixed during this run."
+  ],
+  "updated_files": ["/app/frontend/public/index.html"],
+  "success_rate": {"backend": "not tested (per request)", "frontend": "100% of targeted features rendering & translating correctly"},
+  "test_credentials": "n/a",
+  "seed_data_creation": "None (cost quiz was started but not submitted in this iteration to avoid duplicate inquiry).",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "All 11 features from the review request verified on https://conversion-next.preview.emergentagent.com/. Urgency banner countdown is computed live (Feb/Jul intakes). PT translations confirmed on banner, marquee, working-studying, pathway, scholarship. Mobile sticky bar correctly hidden on desktop, visible on <1024px. Cost quiz result card has [data-testid=quiz-official-link] linking to studyaustralia.gov.au and rent ranges per city. Page <title> was patched in-place to 'Go Global Now — Study & Work in Australia | QEAC Certified Agents' (was 'Emergent | Fullstack App'). Only outstanding minor design issue: Emergent badge overlapping mobile sticky bar's 3rd button — needs UX shift.",
+  "rca of the issue": "n/a — no functional bug encountered. SEO title was a leftover CRA default that was not updated when SEO meta tags were added; fixed by replacing the <title> content."
+}
