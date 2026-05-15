@@ -7,17 +7,22 @@ import { Calculator, ArrowRight, ArrowLeft, CheckCircle2, Sparkles } from "lucid
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
 
-// Tuition + living estimates (AUD/year)
-const PROGRAM_COSTS = {
-  "ELICOS": { tuition: 18000, label_en: "English (ELICOS)", label_pt: "Inglês (ELICOS)" },
-  "VET": { tuition: 12000, label_en: "Vocational (VET)", label_pt: "Profissionalizante (VET)" },
-  "High School": { tuition: 17000, label_en: "High School", label_pt: "Ensino Médio" },
-  "University": { tuition: 32000, label_en: "University", label_pt: "Universidade" },
+// Living costs per city (AUD/year) based on Study Australia (studyaustralia.gov.au)
+// = average weekly rent + other expenses (food, transport, utilities, etc.) × 52
+const CITY_DATA = {
+  "Sydney":     { weekly_rent: [235, 440], rent_avg: 340, other_weekly: 250, label: "Sydney" },
+  "Melbourne":  { weekly_rent: [220, 420], rent_avg: 320, other_weekly: 250, label: "Melbourne" },
+  "Brisbane":   { weekly_rent: [195, 390], rent_avg: 290, other_weekly: 230, label: "Brisbane" },
+  "Gold Coast": { weekly_rent: [195, 380], rent_avg: 285, other_weekly: 225, label: "Gold Coast" },
+  "Perth":      { weekly_rent: [200, 385], rent_avg: 290, other_weekly: 220, label: "Perth" },
 };
 
-const CITY_LIVING = {
-  "Sydney": 28000, "Melbourne": 26000, "Brisbane": 22000,
-  "Gold Coast": 22000, "Perth": 21000,
+// Tuition estimates per program (AUD/year) — Study Australia ranges
+const PROGRAM_COSTS = {
+  "ELICOS":      { tuition: 20000, label_en: "English (ELICOS)",   label_pt: "Inglês (ELICOS)" },
+  "VET":         { tuition: 12000, label_en: "Vocational (VET)",   label_pt: "Profissionalizante (VET)" },
+  "High School": { tuition: 17000, label_en: "High School",        label_pt: "Ensino Médio" },
+  "University":  { tuition: 32000, label_en: "University",         label_pt: "Universidade" },
 };
 
 const DURATIONS = [
@@ -40,7 +45,9 @@ export default function CostQuiz() {
   const update = (k, v) => setData((d) => ({ ...d, [k]: v }));
 
   const tuition = data.program ? PROGRAM_COSTS[data.program].tuition * data.duration : 0;
-  const living = data.city ? CITY_LIVING[data.city] * data.duration : 0;
+  const cityInfo = data.city ? CITY_DATA[data.city] : null;
+  const livingWeekly = cityInfo ? cityInfo.rent_avg + cityInfo.other_weekly : 0;
+  const living = Math.round(livingWeekly * 52 * data.duration);
   const totalAUD = tuition + living;
   const totalBRL = totalAUD * AUD_TO_BRL;
 
@@ -48,8 +55,8 @@ export default function CostQuiz() {
     eyebrow: isPt ? "Calculadora de Custos" : "Cost Calculator",
     title: isPt ? "Quanto custa estudar na Austrália?" : "How much does it cost to study in Australia?",
     subtitle: isPt
-      ? "Descubra em 4 passos. Receba uma estimativa personalizada + bolsas disponíveis no seu e-mail."
-      : "Find out in 4 quick steps. Get a personalised estimate + matching scholarships in your inbox.",
+      ? "Descubra em 4 passos. Valores baseados no governo australiano (studyaustralia.gov.au)."
+      : "Find out in 4 quick steps. Figures based on the Australian government (studyaustralia.gov.au).",
     step1: isPt ? "Qual curso te interessa?" : "Which program interests you?",
     step2: isPt ? "Em qual cidade?" : "Which city?",
     step3: isPt ? "Por quanto tempo?" : "For how long?",
@@ -69,6 +76,12 @@ export default function CostQuiz() {
       ? "Enviamos sua estimativa completa + bolsas disponíveis pro seu e-mail. Um agente também entrará em contato."
       : "We've emailed your full estimate + available scholarships. An agent will also reach out shortly.",
     again: isPt ? "Fazer outra estimativa" : "Run another estimate",
+    source: isPt
+      ? "Dados de custos baseados no calculador oficial do governo australiano (studyaustralia.gov.au). Valores aproximados — câmbio AUD→BRL: 3,4."
+      : "Cost data based on the official Australian government calculator (studyaustralia.gov.au). Approximate values — AUD→BRL rate: 3.4.",
+    rent_label: isPt ? "Aluguel (média semanal)" : "Rent (avg weekly)",
+    other_label: isPt ? "Outras despesas/semana" : "Other expenses/week",
+    weekly_total: isPt ? "Total semanal" : "Weekly total",
   };
 
   const englishLevels = isPt
@@ -166,18 +179,21 @@ export default function CostQuiz() {
                   <div className="animate-fade-in">
                     <h3 className="font-display text-3xl text-[#003B5C] mb-6">{labels.step2}</h3>
                     <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                      {Object.keys(CITY_LIVING).map((c) => (
+                      {Object.keys(CITY_DATA).map((c) => (
                         <button
                           key={c}
                           data-testid={`quiz-city-${c.toLowerCase().replace(/\s+/g, '-')}`}
                           onClick={() => { update("city", c); setStep(2); }}
-                          className={`p-4 rounded-2xl border-2 transition-all ${
+                          className={`p-4 rounded-2xl border-2 transition-all text-left ${
                             data.city === c
                               ? "border-[#003B5C] bg-[#003B5C] text-white"
                               : "border-[#E7E5E4] hover:border-[#F59E0B] bg-[#F9F8F6]"
                           }`}
                         >
                           <div className="font-medium">{c}</div>
+                          <div className={`text-[11px] mt-1 ${data.city === c ? "text-white/70" : "text-[#57534E]"}`}>
+                            AUD ${CITY_DATA[c].weekly_rent[0]}–${CITY_DATA[c].weekly_rent[1]}/wk {isPt ? "aluguel" : "rent"}
+                          </div>
                         </button>
                       ))}
                     </div>
@@ -231,11 +247,11 @@ export default function CostQuiz() {
                 {step === 4 && (
                   <div className="animate-fade-in">
                     <h3 className="font-display text-3xl text-[#003B5C] mb-2">{labels.step5}</h3>
-                    <div className="bg-gradient-to-br from-[#003B5C] to-[#002940] rounded-3xl p-6 mb-6 text-white">
+                    <div className="bg-gradient-to-br from-[#003B5C] to-[#002940] rounded-3xl p-6 mb-4 text-white">
                       <div className="flex items-center gap-2 text-[#F59E0B] text-xs uppercase tracking-[0.2em] mb-3">
                         <Sparkles className="w-3 h-3" /> {labels.estimate}
                       </div>
-                      <div className="grid sm:grid-cols-3 gap-4">
+                      <div className="grid sm:grid-cols-3 gap-4 mb-4">
                         <div>
                           <div className="text-xs text-white/60 uppercase tracking-wider">{labels.tuition}</div>
                           <div className="font-display text-2xl">AUD ${tuition.toLocaleString()}</div>
@@ -250,7 +266,26 @@ export default function CostQuiz() {
                           <div className="text-xs text-white/60 mt-1">≈ BRL R$ {Math.round(totalBRL).toLocaleString()}</div>
                         </div>
                       </div>
+                      {cityInfo && (
+                        <div className="pt-3 border-t border-white/10 grid grid-cols-3 gap-2 text-[11px]">
+                          <div>
+                            <span className="text-white/50 uppercase tracking-wider block">{labels.rent_label}</span>
+                            <span className="font-medium">${cityInfo.rent_avg}/wk</span>
+                          </div>
+                          <div>
+                            <span className="text-white/50 uppercase tracking-wider block">{labels.other_label}</span>
+                            <span className="font-medium">${cityInfo.other_weekly}/wk</span>
+                          </div>
+                          <div>
+                            <span className="text-[#F59E0B] uppercase tracking-wider block">{labels.weekly_total}</span>
+                            <span className="font-medium">${livingWeekly}/wk</span>
+                          </div>
+                        </div>
+                      )}
                     </div>
+                    <p className="text-[11px] text-[#57534E] mb-4 leading-relaxed">
+                      {labels.source}
+                    </p>
                     <div className="space-y-3">
                       <input
                         data-testid="quiz-name"
