@@ -3,6 +3,7 @@ import axios from "axios";
 import { toast } from "sonner";
 import { Calendar } from "@/components/ui/calendar";
 import { format } from "date-fns";
+import { useI18n } from "../i18n";
 import {
   Mail, Phone, MapPin, MessageCircle, ArrowRight, ArrowLeft, CheckCircle2,
 } from "lucide-react";
@@ -16,13 +17,14 @@ const englishLevels = ["Beginner", "Intermediate", "Advanced", "Native"];
 const times = ["09:00", "10:00", "11:00", "14:00", "15:00", "16:00", "17:00"];
 
 export default function Contact() {
+  const { t } = useI18n();
   return (
     <div>
       <section className="py-20 lg:py-28 bg-[#F3F2EE]">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-xs uppercase tracking-[0.3em] text-[#F59E0B] mb-3">Get in Touch</div>
+          <div className="text-xs uppercase tracking-[0.3em] text-[#F59E0B] mb-3">{t("contact.eyebrow")}</div>
           <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl text-[#003B5C] tracking-tight max-w-3xl">
-            Let's start your <em className="not-italic text-[#F59E0B]">journey.</em>
+            {t("contact.title_1")} <em className="not-italic text-[#F59E0B]">{t("contact.title_2")}</em>
           </h1>
         </div>
       </section>
@@ -32,17 +34,17 @@ export default function Contact() {
           <div className="space-y-6">
             <ContactCard
               icon={MapPin}
-              title="Visit"
+              title={t("contact.visit")}
               lines={["Kurrajong Street", "2232 Sydney, Australia"]}
             />
             <ContactCard
               icon={Phone}
-              title="Call"
+              title={t("contact.call")}
               lines={["+61 280029276 (Australia)", "+51 2199501-6925 (Brazil)"]}
             />
             <ContactCard
               icon={Mail}
-              title="Email"
+              title={t("contact.email")}
               lines={["contact@goglobalnow.com.au", "support@goglobalnow.com.au"]}
             />
             <a
@@ -55,8 +57,8 @@ export default function Contact() {
               <div className="flex gap-4 items-center">
                 <MessageCircle className="w-6 h-6" />
                 <div>
-                  <div className="font-medium">WhatsApp</div>
-                  <div className="text-sm text-white/80">Instant reply</div>
+                  <div className="font-medium">{t("contact.whatsapp_label")}</div>
+                  <div className="text-sm text-white/80">{t("contact.whatsapp_sub")}</div>
                 </div>
               </div>
               <ArrowRight className="w-5 h-5" />
@@ -86,6 +88,7 @@ function ContactCard({ icon: Icon, title, lines }) {
 }
 
 function InquiryForm() {
+  const { t } = useI18n();
   const [step, setStep] = useState(1);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -138,8 +141,8 @@ function InquiryForm() {
     <div className="bg-white border border-[#E7E5E4] rounded-3xl p-8 lg:p-12" data-testid="inquiry-form">
       <div className="flex justify-between items-center mb-8">
         <div>
-          <div className="text-xs uppercase tracking-[0.2em] text-[#F59E0B] mb-2">Step {step} of 3</div>
-          <h2 className="font-display text-3xl text-[#003B5C]">Student inquiry</h2>
+          <div className="text-xs uppercase tracking-[0.2em] text-[#F59E0B] mb-2">{t("inq.step")} {step} {t("inq.of")} 3</div>
+          <h2 className="font-display text-3xl text-[#003B5C]">{t("inq.title")}</h2>
         </div>
         <div className="flex gap-2">
           {[1, 2, 3].map((s) => (
@@ -150,18 +153,18 @@ function InquiryForm() {
 
       {step === 1 && (
         <div className="space-y-4 animate-fade-in">
-          <Field label="Full name *">
+          <Field label={t("inq.full_name")}>
             <input data-testid="inquiry-name-input" value={data.full_name} onChange={(e) => update("full_name", e.target.value)} className={inputClass} placeholder="Maria Silva" />
           </Field>
           <div className="grid sm:grid-cols-2 gap-4">
-            <Field label="Email *">
+            <Field label={t("inq.email")}>
               <input data-testid="inquiry-email-input" type="email" value={data.email} onChange={(e) => update("email", e.target.value)} className={inputClass} placeholder="you@email.com" />
             </Field>
-            <Field label="Phone *">
+            <Field label={t("inq.phone")}>
               <input data-testid="inquiry-phone-input" value={data.phone} onChange={(e) => update("phone", e.target.value)} className={inputClass} placeholder="+55 11 ..." />
             </Field>
           </div>
-          <Field label="Country">
+          <Field label={t("inq.country")}>
             <input data-testid="inquiry-country-input" value={data.country} onChange={(e) => update("country", e.target.value)} className={inputClass} />
           </Field>
         </div>
@@ -169,7 +172,7 @@ function InquiryForm() {
 
       {step === 2 && (
         <div className="space-y-5 animate-fade-in">
-          <Field label="Program of interest *">
+          <Field label={t("inq.program")}>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
               {programs.map((p) => (
                 <button
@@ -188,7 +191,7 @@ function InquiryForm() {
               ))}
             </div>
           </Field>
-          <Field label="Preferred destination">
+          <Field label={t("inq.destination")}>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
               {destinations.map((d) => (
                 <button
@@ -207,7 +210,7 @@ function InquiryForm() {
               ))}
             </div>
           </Field>
-          <Field label="English level">
+          <Field label={t("inq.english")}>
             <div className="grid grid-cols-4 gap-2">
               {englishLevels.map((l) => (
                 <button
@@ -230,11 +233,11 @@ function InquiryForm() {
 
       {step === 3 && (
         <div className="space-y-4 animate-fade-in">
-          <Field label="Preferred intake">
-            <input data-testid="inquiry-intake-input" value={data.intake_date} onChange={(e) => update("intake_date", e.target.value)} className={inputClass} placeholder="e.g. February 2026" />
+          <Field label={t("inq.intake")}>
+            <input data-testid="inquiry-intake-input" value={data.intake_date} onChange={(e) => update("intake_date", e.target.value)} className={inputClass} placeholder={t("inq.intake_ph")} />
           </Field>
-          <Field label="Anything else we should know?">
-            <textarea data-testid="inquiry-message-input" value={data.message} onChange={(e) => update("message", e.target.value)} rows={4} className={inputClass + " resize-none"} placeholder="Goals, budget, questions..." />
+          <Field label={t("inq.message")}>
+            <textarea data-testid="inquiry-message-input" value={data.message} onChange={(e) => update("message", e.target.value)} rows={4} className={inputClass + " resize-none"} placeholder={t("inq.message_ph")} />
           </Field>
         </div>
       )}
@@ -242,7 +245,7 @@ function InquiryForm() {
       <div className="flex justify-between mt-8">
         {step > 1 ? (
           <button onClick={() => setStep(step - 1)} data-testid="inquiry-back" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-[#003B5C] hover:bg-[#F3F2EE]">
-            <ArrowLeft className="w-4 h-4" /> Back
+            <ArrowLeft className="w-4 h-4" /> {t("cta.back")}
           </button>
         ) : <span />}
         {step < 3 ? (
@@ -251,7 +254,7 @@ function InquiryForm() {
             data-testid="inquiry-next"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#003B5C] text-white hover:bg-[#002940] transition-all"
           >
-            Next <ArrowRight className="w-4 h-4" />
+            {t("cta.next")} <ArrowRight className="w-4 h-4" />
           </button>
         ) : (
           <button
@@ -260,7 +263,7 @@ function InquiryForm() {
             data-testid="inquiry-submit"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#F59E0B] text-[#003B5C] font-semibold hover:bg-[#fbbf24] transition-all disabled:opacity-60"
           >
-            {loading ? "Sending..." : "Submit inquiry"} <ArrowRight className="w-4 h-4" />
+            {loading ? "..." : t("cta.submit_inquiry")} <ArrowRight className="w-4 h-4" />
           </button>
         )}
       </div>
@@ -269,6 +272,7 @@ function InquiryForm() {
 }
 
 function ConsultationBooking() {
+  const { t } = useI18n();
   const [date, setDate] = useState();
   const [time, setTime] = useState("");
   const [submitted, setSubmitted] = useState(false);
@@ -307,12 +311,12 @@ function ConsultationBooking() {
 
   return (
     <div className="bg-white border border-[#E7E5E4] rounded-3xl p-8 lg:p-12" data-testid="consultation-form">
-      <div className="text-xs uppercase tracking-[0.2em] text-[#F59E0B] mb-2">Free Consultation</div>
-      <h2 className="font-display text-3xl text-[#003B5C] mb-8">Book a 30-minute call</h2>
+      <div className="text-xs uppercase tracking-[0.2em] text-[#F59E0B] mb-2">{t("cons.eyebrow")}</div>
+      <h2 className="font-display text-3xl text-[#003B5C] mb-8">{t("cons.title")}</h2>
 
       <div className="grid md:grid-cols-2 gap-6 mb-6">
         <div>
-          <div className="text-xs uppercase tracking-[0.2em] text-[#57534E] mb-3">Pick a date</div>
+          <div className="text-xs uppercase tracking-[0.2em] text-[#57534E] mb-3">{t("cons.pick_date")}</div>
           <div className="rounded-2xl border border-[#E7E5E4] p-2 bg-[#F9F8F6]">
             <Calendar
               data-testid="consultation-calendar"
@@ -325,7 +329,7 @@ function ConsultationBooking() {
           </div>
         </div>
         <div>
-          <div className="text-xs uppercase tracking-[0.2em] text-[#57534E] mb-3">Pick a time (AEST)</div>
+          <div className="text-xs uppercase tracking-[0.2em] text-[#57534E] mb-3">{t("cons.pick_time")}</div>
           <div className="grid grid-cols-2 gap-2">
             {times.map((t) => (
               <button

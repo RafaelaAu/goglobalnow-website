@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { ArrowRight, Award, CheckCircle2, GraduationCap, Globe2, Heart, Sparkles, Star } from "lucide-react";
+import { ArrowRight, Award, CheckCircle2, Globe2, Heart, Sparkles, Star } from "lucide-react";
+import { useI18n } from "../i18n";
+import CostQuiz from "../components/CostQuiz";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
@@ -70,6 +72,7 @@ const faqs = [
 ];
 
 export default function Home() {
+  const { t } = useI18n();
   const [stats, setStats] = useState({ students_helped: 1200, partner_institutions: 85, years_experience: 7, success_rate: 98 });
 
   useEffect(() => {
@@ -93,14 +96,14 @@ export default function Home() {
           <div className="lg:col-span-8 text-white animate-fade-up">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs tracking-[0.2em] uppercase mb-8">
               <Sparkles className="w-3 h-3 text-[#F59E0B]" />
-              QEAC Certified • Brazil to Australia
+              {t("hero.tag")}
             </div>
             <h1 className="font-display font-medium text-5xl sm:text-6xl lg:text-7xl xl:text-8xl leading-[0.95] tracking-tight text-balance">
-              Study & Work in <em className="gradient-text not-italic">Australia.</em>
-              <br />Your global journey<br />starts here.
+              {t("hero.title_1")} <em className="gradient-text not-italic">{t("hero.title_2")}</em>
+              <br />{t("hero.title_3")}<br />{t("hero.title_4")}
             </h1>
             <p className="mt-8 text-lg sm:text-xl text-white/80 max-w-2xl font-light leading-relaxed">
-              World-class education, vibrant cities and unforgettable experiences — guided by certified agents who treat your dream like their own.
+              {t("hero.subtitle")}
             </p>
             <div className="mt-10 flex flex-col sm:flex-row gap-4">
               <Link
@@ -108,7 +111,7 @@ export default function Home() {
                 data-testid="hero-book-consultation"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-[#F59E0B] text-[#003B5C] font-semibold hover:bg-[#fbbf24] hover:scale-105 transition-all"
               >
-                Book Free Consultation <ArrowRight className="w-4 h-4" />
+                {t("cta.book_consultation")} <ArrowRight className="w-4 h-4" />
               </Link>
               <a
                 href="https://wa.me/61280029276"
@@ -117,17 +120,17 @@ export default function Home() {
                 data-testid="hero-whatsapp"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-white/10 backdrop-blur-md border border-white/30 text-white font-medium hover:bg-white/20 transition-all"
               >
-                WhatsApp Us
+                {t("cta.whatsapp")}
               </a>
             </div>
           </div>
 
           <div className="lg:col-span-4 grid grid-cols-2 gap-4 animate-fade-up delay-300">
             {[
-              { num: `${stats.students_helped}+`, label: "Students Placed" },
-              { num: `${stats.partner_institutions}+`, label: "Partner Institutions" },
-              { num: `${stats.years_experience}+`, label: "Years of Expertise" },
-              { num: `${stats.success_rate}%`, label: "Visa Success Rate" },
+              { num: `${stats.students_helped}+`, label: t("stat.students") },
+              { num: `${stats.partner_institutions}+`, label: t("stat.partners") },
+              { num: `${stats.years_experience}+`, label: t("stat.years") },
+              { num: `${stats.success_rate}%`, label: t("stat.success") },
             ].map((s, i) => (
               <div key={i} className="backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl p-5 text-white">
                 <div className="font-display text-4xl text-[#F59E0B] font-medium">{s.num}</div>
@@ -138,7 +141,7 @@ export default function Home() {
         </div>
 
         <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/60 text-xs tracking-[0.3em] uppercase animate-float">
-          Scroll
+          {t("scroll")}
         </div>
       </section>
 
@@ -147,9 +150,9 @@ export default function Home() {
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <div className="font-display text-5xl text-[#F59E0B] mb-6">"</div>
           <p className="font-display text-3xl sm:text-4xl lg:text-5xl text-[#003B5C] leading-tight text-balance">
-            The world is like a book, and those who do not travel read only one page.
+            {t("quote.text")}
           </p>
-          <div className="mt-8 text-sm uppercase tracking-[0.3em] text-[#57534E]">— Saint Augustine</div>
+          <div className="mt-8 text-sm uppercase tracking-[0.3em] text-[#57534E]">{t("quote.author")}</div>
         </div>
       </section>
 
@@ -158,13 +161,13 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-16">
             <div>
-              <div className="text-xs uppercase tracking-[0.3em] text-[#F59E0B] mb-3">Our Programs</div>
+              <div className="text-xs uppercase tracking-[0.3em] text-[#F59E0B] mb-3">{t("programs.eyebrow")}</div>
               <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl text-[#003B5C] tracking-tight max-w-2xl">
-                Choose your path to a global future.
+                {t("programs.title")}
               </h2>
             </div>
             <Link to="/programs" className="inline-flex items-center gap-2 text-[#003B5C] font-medium hover:text-[#F59E0B]" data-testid="programs-link">
-              All programs <ArrowRight className="w-4 h-4" />
+              {t("cta.all_programs")} <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
 
@@ -192,18 +195,18 @@ export default function Home() {
       <section className="py-24 lg:py-32">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 grid lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-5">
-            <div className="text-xs uppercase tracking-[0.3em] text-[#F59E0B] mb-3">Why Go Global Now</div>
+            <div className="text-xs uppercase tracking-[0.3em] text-[#F59E0B] mb-3">{t("why.eyebrow")}</div>
             <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl text-[#003B5C] tracking-tight mb-6">
-              Your success is our <em className="text-[#F59E0B] not-italic">obsession.</em>
+              {t("why.title_1")} <em className="text-[#F59E0B] not-italic">{t("why.title_2")}</em>
             </h2>
             <p className="text-lg text-[#57534E] leading-relaxed mb-10">
-              We don't just place students — we craft journeys. With QEAC certified agents and a Brazil-to-Australia network, we walk with you every step.
+              {t("why.body")}
             </p>
             <div className="space-y-5">
               {[
-                { icon: Award, title: "QEAC Certified Agents", desc: "Government-recognised qualifications for ethical, expert advice." },
-                { icon: Heart, title: "Personalised Support", desc: "One agent, end-to-end — from course selection to your arrival in Australia." },
-                { icon: CheckCircle2, title: "Ethical Guidance", desc: "We recommend what's right for you, not what pays us most." },
+                { icon: Award, title: t("why.qeac_title"), desc: t("why.qeac_desc") },
+                { icon: Heart, title: t("why.personal_title"), desc: t("why.personal_desc") },
+                { icon: CheckCircle2, title: t("why.ethical_title"), desc: t("why.ethical_desc") },
               ].map((f, i) => (
                 <div key={i} className="flex gap-4">
                   <div className="w-12 h-12 rounded-2xl bg-[#003B5C] flex items-center justify-center flex-shrink-0">
@@ -236,13 +239,16 @@ export default function Home() {
         </div>
       </section>
 
+      {/* COST QUIZ */}
+      <CostQuiz />
+
       {/* DESTINATIONS */}
       <section className="py-24 bg-[#003B5C] text-white grain">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="mb-16 text-center">
-            <div className="text-xs uppercase tracking-[0.3em] text-[#F59E0B] mb-3">Top 5 Destinations</div>
+            <div className="text-xs uppercase tracking-[0.3em] text-[#F59E0B] mb-3">{t("dest.eyebrow")}</div>
             <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl tracking-tight max-w-2xl mx-auto">
-              Find your Australian home.
+              {t("dest.title")}
             </h2>
           </div>
           <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-4">
@@ -268,9 +274,9 @@ export default function Home() {
       <section className="py-24 lg:py-32">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="mb-16">
-            <div className="text-xs uppercase tracking-[0.3em] text-[#F59E0B] mb-3">Success Stories</div>
+            <div className="text-xs uppercase tracking-[0.3em] text-[#F59E0B] mb-3">{t("test.eyebrow")}</div>
             <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl text-[#003B5C] tracking-tight max-w-3xl">
-              Real students. Real journeys. Real outcomes.
+              {t("test.title")}
             </h2>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
@@ -294,8 +300,8 @@ export default function Home() {
       <section className="py-24 bg-[#F3F2EE]">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-12">
-            <div className="text-xs uppercase tracking-[0.3em] text-[#F59E0B] mb-3">Frequently Asked</div>
-            <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl text-[#003B5C] tracking-tight">Questions, answered.</h2>
+            <div className="text-xs uppercase tracking-[0.3em] text-[#F59E0B] mb-3">{t("faq.eyebrow")}</div>
+            <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl text-[#003B5C] tracking-tight">{t("faq.title")}</h2>
           </div>
           <FAQAccordion faqs={faqs} />
         </div>
@@ -308,10 +314,10 @@ export default function Home() {
             <div className="absolute top-0 right-0 w-64 h-64 bg-[#F59E0B] rounded-full blur-3xl opacity-20" />
             <Globe2 className="w-12 h-12 text-[#F59E0B] mx-auto mb-6" />
             <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl tracking-tight mb-6">
-              Your future in Australia<br /> is one conversation away.
+              {t("cta_final.title_1")}<br /> {t("cta_final.title_2")}
             </h2>
             <p className="text-lg text-white/80 max-w-xl mx-auto mb-10">
-              Book a free consultation with a QEAC certified agent and find your perfect pathway.
+              {t("cta_final.body")}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
@@ -319,14 +325,14 @@ export default function Home() {
                 data-testid="cta-book-consultation"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-[#F59E0B] text-[#003B5C] font-semibold hover:bg-[#fbbf24] hover:scale-105 transition-all"
               >
-                Book Free Consultation <ArrowRight className="w-4 h-4" />
+                {t("cta.book_consultation")} <ArrowRight className="w-4 h-4" />
               </Link>
               <a
                 href="tel:+61280029276"
                 data-testid="cta-call"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-white/10 border border-white/30 text-white font-medium hover:bg-white/20"
               >
-                Call +61 280029276
+                {t("cta.call")} +61 280029276
               </a>
             </div>
           </div>

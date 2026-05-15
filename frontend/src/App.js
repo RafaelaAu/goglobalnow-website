@@ -1,6 +1,7 @@
 import "@/App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Toaster } from "sonner";
+import { I18nProvider } from "./i18n";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import Programs from "./pages/Programs";
@@ -12,6 +13,7 @@ import Admin from "./pages/Admin";
 function App() {
   return (
     <div className="App font-body">
+      <I18nProvider>
       <BrowserRouter>
         <Routes>
           <Route element={<Layout />}>
@@ -24,6 +26,7 @@ function App() {
           <Route path="/admin" element={<Admin />} />
         </Routes>
       </BrowserRouter>
+      </I18nProvider>
       <Toaster position="top-right" richColors />
     </div>
   );
