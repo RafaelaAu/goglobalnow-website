@@ -79,6 +79,7 @@ export default function CostQuiz() {
     source: isPt
       ? "Dados de custos baseados no calculador oficial do governo australiano (studyaustralia.gov.au). Valores aproximados — câmbio AUD→BRL: 3,4."
       : "Cost data based on the official Australian government calculator (studyaustralia.gov.au). Approximate values — AUD→BRL rate: 3.4.",
+    official_link: isPt ? "Veja o calculador oficial detalhado" : "View the official detailed calculator",
     rent_label: isPt ? "Aluguel (média semanal)" : "Rent (avg weekly)",
     other_label: isPt ? "Outras despesas/semana" : "Other expenses/week",
     weekly_total: isPt ? "Total semanal" : "Weekly total",
@@ -283,9 +284,18 @@ export default function CostQuiz() {
                         </div>
                       )}
                     </div>
-                    <p className="text-[11px] text-[#57534E] mb-4 leading-relaxed">
+                    <p className="text-[11px] text-[#57534E] mb-2 leading-relaxed">
                       {labels.source}
                     </p>
+                    <a
+                      href="https://costofliving.studyaustralia.gov.au"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      data-testid="quiz-official-link"
+                      className="inline-flex items-center gap-1 text-[11px] text-[#003B5C] hover:text-[#F59E0B] underline underline-offset-2 mb-4"
+                    >
+                      {labels.official_link} <ArrowRight className="w-3 h-3" />
+                    </a>
                     <div className="space-y-3">
                       <input
                         data-testid="quiz-name"
