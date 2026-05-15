@@ -53,7 +53,7 @@ export default function ChatWidget() {
         <button
           data-testid="chat-toggle"
           onClick={() => setOpen(true)}
-          className="fixed bottom-6 right-6 z-40 flex items-center gap-2 px-5 py-3 rounded-full bg-[#003B5C] text-white shadow-2xl hover:scale-105 transition-all"
+          className="fixed bottom-24 right-6 z-[9999] flex items-center gap-2 px-5 py-3 rounded-full bg-[#003B5C] text-white shadow-2xl hover:scale-105 transition-all"
         >
           <Sparkles className="w-4 h-4 text-[#F59E0B]" />
           <span className="text-sm font-medium">Ask Aussie AI</span>
@@ -63,7 +63,7 @@ export default function ChatWidget() {
       {open && (
         <div
           data-testid="chat-widget"
-          className="fixed bottom-6 right-6 z-40 w-[92vw] sm:w-[400px] h-[560px] max-h-[80vh] bg-white rounded-3xl shadow-2xl flex flex-col overflow-hidden border border-[#E7E5E4] animate-fade-up"
+          className="fixed bottom-24 right-6 z-[9999] w-[92vw] sm:w-[400px] h-[560px] max-h-[80vh] bg-white rounded-3xl shadow-2xl flex flex-col overflow-hidden border border-[#E7E5E4] animate-fade-up"
         >
           <div className="bg-[#003B5C] text-white p-4 flex items-center justify-between">
             <div className="flex items-center gap-3">

@@ -194,6 +194,7 @@ function InquiryForm() {
                 <button
                   key={d}
                   type="button"
+                  data-testid={`inquiry-destination-${d.replace(/\s+/g, '-').toLowerCase()}`}
                   onClick={() => update("preferred_destination", d)}
                   className={`px-3 py-2.5 rounded-xl text-sm transition-all ${
                     data.preferred_destination === d
