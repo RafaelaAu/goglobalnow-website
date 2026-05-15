@@ -50,8 +50,8 @@ A premium, conversion-optimised education-agency website for **Go Global Now** �
 - **P2**: Integrate Stripe for paid services (visa application, premium consultation)
 - **P2**: Live chat handoff from Aussie AI to human agent
 
-## Next Tasks
-- Hook real Resend domain + send transactional template
-- Protect /admin with auth
-- Add SEO meta tags, OG images, sitemap
-- Add Google Analytics + Meta Pixel for conversion tracking
+## Next Tasks (Iteration 2 — completed 2025-12)
+- ✅ Uploaded logo integrated into Header + Footer
+- ✅ EN/PT language toggle with localStorage persistence (covers Header, Footer, Home, Contact)
+- ✅ Cost Calculator quiz (4 steps + email capture) on homepage — lead saves to /api/inquiries with [QUIZ] tag
+

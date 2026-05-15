@@ -9,7 +9,9 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-20 grid lg:grid-cols-4 gap-12">
         <div>
           <div className="flex items-center gap-3 mb-6">
-            <img src="/assets/logo.jpeg" alt="Go Global Now" className="w-12 h-12 rounded-full object-cover" />
+            <div className="w-14 h-14 rounded-full bg-white p-1 shadow-md">
+              <img src="/assets/logo.jpeg" alt="Go Global Now" className="w-full h-full rounded-full object-cover" />
+            </div>
             <div>
               <div className="font-display text-xl font-medium">Go Global Now</div>
               <div className="text-[10px] tracking-[0.25em] uppercase text-[#F59E0B] font-semibold">Intercâmbio</div>
