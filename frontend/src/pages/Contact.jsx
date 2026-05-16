@@ -36,7 +36,7 @@ export default function Contact() {
             <ContactCard
               icon={MapPin}
               title={t("contact.visit")}
-              lines={["Kurrajong Street", "2232 Sydney, Australia"]}
+              lines={["Aitken Street", "Williamstown VIC 3016, Australia"]}
             />
             <ContactCard
               icon={Phone}
