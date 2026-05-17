@@ -27,10 +27,10 @@ export default function About() {
               Founded by passionate education professionals who have lived the immigrant student experience firsthand, Go Global Now bridges two cultures — Brazilian warmth meets Australian opportunity.
             </p>
             <p className="text-[#57534E] leading-relaxed mb-4 text-lg">
-              With QEAC certified agents who treat every student as family, we've helped over 1,200 students start their Australian journey across English schools, vocational training, and top universities.
+              With QEAC certified expertise and a Brazil-to-Australia network, we provide truly personalised, 1:1 guidance to every student — from the first English lesson to their first day at school in Australia.
             </p>
             <p className="text-[#57534E] leading-relaxed text-lg">
-              We don't just process applications. We mentor, guide, advocate and celebrate every milestone with you — from your first English lesson to your graduation walk.
+              We don't process applications at scale. We mentor, guide, advocate and celebrate every milestone with you — from your first course choice to your graduation walk.
             </p>
           </div>
         </div>

@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useState } from "react";
 import { ArrowRight, Award, CheckCircle2, Globe2, Heart, Sparkles, Star } from "lucide-react";
 import { useI18n } from "../i18n";
 import CostQuiz from "../components/CostQuiz";
@@ -52,18 +51,18 @@ const destinations = [
 const testimonials = [
   {
     quote: "Go Global Now made my dream of studying in Sydney real. From visa to enrolment, everything was handled with care.",
-    name: "Mariana S.",
-    role: "Bachelor of Business, UTS Sydney",
+    name: "Rebeca Serello",
+    role: "ELICOS, APC Sydney",
   },
   {
-    quote: "Their QEAC agents found me a scholarship I didn't even know existed. Best decision of my life.",
+    quote: "Their QEAC agent showed me scholarship options I didn't even know existed. Best decision of my life.",
     name: "Lucas F.",
-    role: "Master of IT, Melbourne",
+    role: "ELICOS Pathway, Melbourne",
   },
   {
     quote: "Friendly, ethical, and incredibly knowledgeable. They felt like family from day one.",
     name: "Camila R.",
-    role: "ELICOS + VET Nursing, Brisbane",
+    role: "VET Nursing, Brisbane",
   },
 ];
 
@@ -77,11 +76,13 @@ const faqs = [
 
 export default function Home() {
   const { t } = useI18n();
-  const [stats, setStats] = useState({ students_helped: 1200, partner_institutions: 85, years_experience: 7, success_rate: 98 });
-
-  useEffect(() => {
-    axios.get(`${API}/stats`).then((r) => setStats(r.data)).catch(() => {});
-  }, []);
+  // Honest stats for a first-year QEAC-certified agency
+  const heroStats = [
+    { num: "100%", label: t("stat.success") },
+    { num: "10+", label: t("stat.partners") },
+    { num: "1:1", label: t("stat.personal") },
+    { num: "QEAC", label: t("stat.certified") },
+  ];
 
   return (
     <div className="overflow-x-hidden">
@@ -130,12 +131,7 @@ export default function Home() {
           </div>
 
           <div className="lg:col-span-4 grid grid-cols-2 gap-4 animate-fade-up delay-300">
-            {[
-              { num: `${stats.students_helped}+`, label: t("stat.students") },
-              { num: `${stats.partner_institutions}+`, label: t("stat.partners") },
-              { num: `${stats.years_experience}+`, label: t("stat.years") },
-              { num: `${stats.success_rate}%`, label: t("stat.success") },
-            ].map((s, i) => (
+            {heroStats.map((s, i) => (
               <div key={i} className="backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl p-5 text-white">
                 <div className="font-display text-4xl text-[#F59E0B] font-medium">{s.num}</div>
                 <div className="text-xs uppercase tracking-wider text-white/70 mt-1">{s.label}</div>

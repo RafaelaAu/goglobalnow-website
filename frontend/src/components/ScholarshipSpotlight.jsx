@@ -8,34 +8,34 @@ export default function ScholarshipSpotlight() {
 
   const scholarships = [
     {
-      tag: isPt ? "Bolsa Universitária" : "University Scholarship",
-      title: isPt ? "Bolsa de Excelência Acadêmica" : "Academic Excellence Scholarship",
-      amount: "25%",
+      tag: isPt ? "Cursos de Inglês" : "English Courses",
+      title: isPt ? "Pacotes ELICOS com bônus" : "ELICOS bonus packages",
+      amount: isPt ? "Semanas extras" : "Bonus weeks",
       desc: isPt
-        ? "Para alunos com excelente histórico acadêmico em cursos de Bacharelado e Mestrado em universidades parceiras."
-        : "For students with strong academic records pursuing Bachelor's or Master's at our partner universities.",
-      bg: "from-[#003B5C] to-[#002940]",
-      tagColor: "text-[#F59E0B]",
+        ? "Trabalhamos com escolas que oferecem semanas extras gratuitas quando você se inscreve em pacotes mais longos."
+        : "We partner with schools that offer bonus free weeks when you enrol in longer English programs.",
+      bg: "from-[#0EA5E9] to-[#0369A1]",
+      tagColor: "text-white",
     },
     {
-      tag: isPt ? "Bolsa Profissionalizante" : "Vocational Scholarship",
-      title: isPt ? "Programa VET Pathway" : "VET Pathway Program",
-      amount: "AUD $3,000",
+      tag: isPt ? "Cursos Profissionalizantes" : "Vocational Courses",
+      title: isPt ? "Descontos em cursos VET" : "VET course discounts",
+      amount: isPt ? "Desconto direto" : "Direct discount",
       desc: isPt
-        ? "Desconto direto em cursos VET de Negócios, TI, Hospitalidade e Saúde com nossas escolas parceiras."
-        : "Direct discount on VET courses in Business, IT, Hospitality and Health with partner schools.",
+        ? "Possibilidade de descontos em cursos VET (Negócios, TI, Hospitalidade, Saúde) conforme escola e duração."
+        : "Possible direct discounts on VET programs (Business, IT, Hospitality, Health) depending on school and duration.",
       bg: "from-[#F59E0B] to-[#D97706]",
       tagColor: "text-[#003B5C]",
     },
     {
-      tag: isPt ? "Bolsa de Inglês" : "English Scholarship",
-      title: isPt ? "Programa ELICOS Brasil" : "ELICOS Brazil Program",
-      amount: isPt ? "Até 4 semanas grátis" : "Up to 4 weeks free",
+      tag: isPt ? "Universidades sob Demanda" : "University on Request",
+      title: isPt ? "Caminho universitário" : "University pathway",
+      amount: isPt ? "Sob consulta" : "On request",
       desc: isPt
-        ? "Estudantes brasileiros que matricularem 24+ semanas de inglês ganham até 4 semanas extras gratuitas."
-        : "Brazilian students enrolling 24+ weeks of English get up to 4 bonus weeks free of charge.",
-      bg: "from-[#0EA5E9] to-[#0369A1]",
-      tagColor: "text-white",
+        ? "Para alunos interessados em graduação ou pós, podemos avaliar bolsas e opções caso a caso."
+        : "If you're interested in undergraduate or postgraduate study, we can explore scholarship options case by case.",
+      bg: "from-[#003B5C] to-[#002940]",
+      tagColor: "text-[#F59E0B]",
     },
   ];
 
@@ -45,7 +45,7 @@ export default function ScholarshipSpotlight() {
         <div className="grid lg:grid-cols-12 gap-8 mb-16 items-end">
           <div className="lg:col-span-7">
             <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-[#F59E0B] mb-3">
-              <Trophy className="w-3 h-3" /> {isPt ? "Bolsas em Destaque" : "Scholarship Spotlight"}
+              <Trophy className="w-3 h-3" /> {isPt ? "Vantagens & Bolsas" : "Perks & Scholarships"}
             </div>
             <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl text-[#003B5C] tracking-tight">
               {isPt ? "Pague menos. Sonhe mais alto." : "Pay less. Dream bigger."}
@@ -92,7 +92,7 @@ export default function ScholarshipSpotlight() {
             data-testid="scholarship-cta"
             className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-[#003B5C] text-white hover:bg-[#002940] hover:scale-105 transition-all"
           >
-            {isPt ? "Veja todas as bolsas" : "See all scholarships"} <ArrowRight className="w-4 h-4" />
+            {isPt ? "Fale com a gente" : "Talk to us"} <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
       </div>
