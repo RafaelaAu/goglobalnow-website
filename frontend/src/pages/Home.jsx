@@ -79,7 +79,7 @@ export default function Home() {
   // Honest stats for a first-year QEAC-certified agency
   const heroStats = [
     { num: "100%", label: t("stat.success") },
-    { num: t("stat.many"), label: t("stat.partners") },
+    { num: t("stat.network_num"), label: t("stat.network") },
     { num: "1:1", label: t("stat.personal") },
     { num: "QEAC", label: t("stat.certified") },
   ];
