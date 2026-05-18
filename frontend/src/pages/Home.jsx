@@ -45,7 +45,7 @@ const destinations = [
   { name: "Melbourne", tag: "Creative & Dynamic", image: "https://images.unsplash.com/photo-1545044846-351ba102b6d5?auto=format&fit=crop&w=800&q=80" },
   { name: "Brisbane", tag: "Warm & Welcoming", image: "https://images.unsplash.com/photo-1566734904496-9309bb1798ae?auto=format&fit=crop&w=800&q=80" },
   { name: "Gold Coast", tag: "Beaches & Lifestyle", image: "https://images.unsplash.com/photo-1626070191915-0ae0d9089132?auto=format&fit=crop&w=800&q=80" },
-  { name: "Perth", tag: "Booming & Beautiful", image: "https://images.unsplash.com/photo-1580014942344-ce423d2b885a?auto=format&fit=crop&w=800&q=80" },
+  { name: "Perth", tag: "Booming & Beautiful", image: "https://images.unsplash.com/photo-1596826063323-9a60b8d11e72?auto=format&fit=crop&w=1200&q=90" },
 ];
 
 const testimonials = [
