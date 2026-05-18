@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { useI18n } from "../i18n";
-import UrgencyBanner from "./UrgencyBanner";
 
 export default function Header() {
   const [open, setOpen] = useState(false);

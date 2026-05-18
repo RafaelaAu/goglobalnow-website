@@ -9,7 +9,7 @@ export default function Layout() {
   return (
     <div className="min-h-screen bg-[#F9F8F6] text-[#1C1917]">
       <Header />
-      <main className="pt-28 pb-20 lg:pb-0">
+      <main className="pt-20 pb-20 lg:pb-0">
         <Outlet />
       </main>
       <Footer />
