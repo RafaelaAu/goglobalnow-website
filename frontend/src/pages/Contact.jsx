@@ -114,7 +114,18 @@ function InquiryForm() {
     }
     setLoading(true);
     try {
-      await axios.post(`${API}/inquiries`, data);
+      await axios.post("https://formspree.io/f/mdajodjg", {
+        _subject: `New Student Inquiry — ${data.full_name}`,
+        full_name: data.full_name,
+        email: data.email,
+        phone: data.phone,
+        country: data.country,
+        program_interest: data.program_interest,
+        preferred_destination: data.preferred_destination,
+        english_level: data.english_level,
+        intake_date: data.intake_date,
+        message: data.message,
+      }, { headers: { Accept: "application/json" } });
       trackEvent("inquiry_submit", { program: data.program_interest, destination: data.preferred_destination });
       setSubmitted(true);
       toast.success("Inquiry submitted! We'll be in touch within 24 hours.");
