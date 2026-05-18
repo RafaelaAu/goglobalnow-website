@@ -20,7 +20,7 @@ const cities = [
     name: "Brisbane",
     tagline: "Warm. Welcoming. River city.",
     description: "Subtropical climate, vibrant student community and gateway to the Great Barrier Reef. UQ and QUT lead world rankings.",
-    image: "https://images.unsplash.com/photo-1572125675722-238a4f1f8ea3?auto=format&fit=crop&w=1600&q=85",
+    image: "https://images.unsplash.com/photo-1566734904496-9309bb1798ae?auto=format&fit=crop&w=1600&q=85",
     stats: { population: "2.5M", climate: "Subtropical", institutions: "25+" },
   },
   {
@@ -34,7 +34,7 @@ const cities = [
     name: "Perth",
     tagline: "Booming. Beautiful. Best sunsets.",
     description: "Australia's western jewel — mining powerhouse with affordable living and top universities like UWA and Curtin.",
-    image: "https://images.unsplash.com/photo-1592538910490-7cbb01d31b69?auto=format&fit=crop&w=1600&q=85",
+    image: "https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=1600&q=85",
     stats: { population: "2.1M", climate: "Mediterranean", institutions: "20+" },
   },
 ];
