@@ -29,7 +29,6 @@ export default function Header() {
         scrolled ? "glass shadow-sm" : "bg-transparent"
       }`}
     >
-      <UrgencyBanner />
       <div className="max-w-7xl mx-auto px-6 lg:px-8 h-20 flex items-center justify-between">
         <Link to="/" data-testid="brand-logo" className="flex items-center gap-3 group">
           <img src="/assets/logo.jpeg" alt="Go Global Now" className="w-12 h-12 rounded-full object-cover ring-2 ring-white/60 shadow-sm group-hover:scale-105 transition-transform" />
