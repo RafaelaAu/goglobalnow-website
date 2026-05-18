@@ -34,7 +34,7 @@ const cities = [
     name: "Perth",
     tagline: "Booming. Beautiful. Best sunsets.",
     description: "Australia's western jewel — mining powerhouse with affordable living and top universities like UWA and Curtin.",
-    image: "https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=1600&q=85",
+    image: "https://images.unsplash.com/photo-1580014942344-ce423d2b885a?auto=format&fit=crop&w=1600&q=85",
     stats: { population: "2.1M", climate: "Mediterranean", institutions: "20+" },
   },
 ];
