@@ -33,7 +33,7 @@ const DURATIONS = [
   { val: 3, en: "3+ years", pt: "3+ anos" },
 ];
 
-const AUD_TO_BRL = 3.4;
+const AUD_TO_BRL = 3.6;
 
 export default function CostQuiz() {
   const { lang, t } = useI18n();
