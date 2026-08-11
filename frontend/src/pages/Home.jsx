@@ -67,11 +67,11 @@ const testimonials = [
 ];
 
 const faqs = [
-  { q: "How much does it cost to study in Australia?", a: "Tuition ranges from AUD $7,000 (ELICOS) to AUD $35,000+/year (university). Living costs average AUD $24,500/year. We help you find scholarships and affordable pathways." },
+  { q: "How much does it cost to study in Australia?", a: "Tuition ranges from AUD $7,000 (ELICOS) to AUD $35,000+/year (university). For your student visa, you'll need to show access to at least AUD $29,710/year in living costs (2026 requirement), plus tuition and travel funds. We help you find scholarships and affordable pathways." },
   { q: "Can I work while studying?", a: "Yes — student visa (Subclass 500) allows up to 48 hours per fortnight during term and unlimited hours during scheduled breaks." },
   { q: "What is QEAC certification?", a: "Qualified Education Agent Counsellor — an Australian government-recognised credential ensuring ethical, expert advice. All our agents are QEAC certified." },
   { q: "Do I need IELTS?", a: "Most programs require IELTS, but we offer pathways including direct entry through ELICOS courses if your English needs strengthening." },
-  { q: "How long does the visa process take?", a: "Typically 4–8 weeks once you have your Confirmation of Enrolment (CoE). We guide you end-to-end." },
+  { q: "How long does the visa process take?", a: "Processing can range from around 4 weeks up to several months, depending on your application priority and how complete your documents are. We help you prepare a decision-ready application to avoid delays." },
 ];
 
 export default function Home() {
