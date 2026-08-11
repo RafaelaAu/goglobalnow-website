@@ -41,7 +41,7 @@ export default function Contact() {
             <ContactCard
               icon={Phone}
               title={t("contact.call")}
-              lines={["+61 401 864 097 (Australia)", "+51 2199501-6925 (Brazil)"]}
+              lines={["+61 401 864 097 (Australia)", "+55 2199501-6925 (Brazil)"]}
             />
             <ContactCard
               icon={Mail}
