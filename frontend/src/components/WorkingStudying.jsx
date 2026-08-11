@@ -34,9 +34,9 @@ export default function WorkingStudying() {
         desc: isPt ? "Um dos maiores do mundo — equivalente a R$ 85+/hora." : "Among the highest globally — equal to BRL R$85+/hour.",
       },
     ],
-    footnote: isPt
-      ? "Após formado, você ainda pode aplicar para o Temporary Graduate Visa (Subclass 485) e trabalhar de 2 a 4 anos na Austrália."
-      : "After graduation you can apply for the Temporary Graduate Visa (Subclass 485) and work in Australia for 2–4 more years.",
+footnote: isPt
+      ? "Após formado, você pode aplicar para o Temporary Graduate Visa (Subclass 485) e continuar trabalhando na Austrália — a duração varia de 1 a 4 anos, dependendo da sua qualificação e local de estudo."
+      : "After graduation you can apply for the Temporary Graduate Visa (Subclass 485) to keep working in Australia — duration ranges from 1 to 4 years depending on your qualification and study location.",
   };
 
   return (
