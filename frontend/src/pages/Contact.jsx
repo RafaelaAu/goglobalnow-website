@@ -1,21 +1,17 @@
 import { useState } from "react";
 import axios from "axios";
 import { toast } from "sonner";
-import { Calendar } from "@/components/ui/calendar";
-import { format } from "date-fns";
 import { useI18n } from "../i18n";
 import { trackEvent } from "../lib/analytics";
 import {
-  Mail, Phone, MapPin, MessageCircle, ArrowRight, ArrowLeft, CheckCircle2,
+  Mail, Phone, MapPin, MessageCircle, ArrowRight, ArrowLeft, CheckCircle2, Calendar as CalIcon,
 } from "lucide-react";
-
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
 
 const programs = ["English (ELICOS)", "Vocational (VET)", "High School", "Higher Education", "Not sure yet"];
 const destinations = ["Sydney", "Melbourne", "Brisbane", "Gold Coast", "Perth", "No preference"];
 const englishLevels = ["Beginner", "Intermediate", "Advanced", "Native"];
-const times = ["09:00", "10:00", "11:00", "14:00", "15:00", "16:00", "17:00"];
+
+const GOOGLE_BOOKING_LINK = "https://calendar.app.google/kJ4wYfHWQ9FpPJEL8";
 
 export default function Contact() {
   const { t } = useI18n();
@@ -48,7 +44,7 @@ export default function Contact() {
               title={t("contact.email")}
               lines={["contact@goglobalnow.com.au", "support@goglobalnow.com.au"]}
             />
-            <a
+            
               href="https://wa.me/61401864097"
               target="_blank"
               rel="noopener noreferrer"
@@ -286,98 +282,25 @@ function InquiryForm() {
 
 function ConsultationBooking() {
   const { t } = useI18n();
-  const [date, setDate] = useState();
-  const [time, setTime] = useState("");
-  const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [data, setData] = useState({ full_name: "", email: "", phone: "", topic: "", notes: "" });
-
-  const submit = async () => {
-    if (!data.full_name || !data.email || !data.phone || !date || !time) {
-      toast.error("Please complete all required fields.");
-      return;
-    }
-    setLoading(true);
-    try {
-      await axios.post(`${API}/consultations`, {
-        ...data,
-        preferred_date: format(date, "yyyy-MM-dd"),
-        preferred_time: time,
-      });
-      trackEvent("consultation_book", { date: format(date, "yyyy-MM-dd"), time });
-      setSubmitted(true);
-      toast.success("Consultation booked!");
-    } catch (e) {
-      toast.error("Booking failed. Please try again.");
-    }
-    setLoading(false);
-  };
-
-  if (submitted) {
-    return (
-      <div className="bg-[#003B5C] text-white rounded-3xl p-12 text-center" data-testid="consultation-success">
-        <CheckCircle2 className="w-12 h-12 text-[#F59E0B] mx-auto mb-4" />
-        <h3 className="font-display text-3xl mb-3">See you on {date && format(date, "MMMM d")} at {time}!</h3>
-        <p className="text-white/80">We'll send confirmation details to {data.email}.</p>
-      </div>
-    );
-  }
-
   return (
     <div className="bg-white border border-[#E7E5E4] rounded-3xl p-8 lg:p-12" data-testid="consultation-form">
       <div className="text-xs uppercase tracking-[0.2em] text-[#F59E0B] mb-2">{t("cons.eyebrow")}</div>
-      <h2 className="font-display text-3xl text-[#003B5C] mb-8">{t("cons.title")}</h2>
-
-      <div className="grid md:grid-cols-2 gap-6 mb-6">
-        <div>
-          <div className="text-xs uppercase tracking-[0.2em] text-[#57534E] mb-3">{t("cons.pick_date")}</div>
-          <div className="rounded-2xl border border-[#E7E5E4] p-2 bg-[#F9F8F6]">
-            <Calendar
-              data-testid="consultation-calendar"
-              mode="single"
-              selected={date}
-              onSelect={setDate}
-              disabled={(d) => d < new Date(new Date().setHours(0,0,0,0)) || d.getDay() === 0}
-              className="rounded-md"
-            />
-          </div>
-        </div>
-        <div>
-          <div className="text-xs uppercase tracking-[0.2em] text-[#57534E] mb-3">{t("cons.pick_time")}</div>
-          <div className="grid grid-cols-2 gap-2">
-            {times.map((t) => (
-              <button
-                key={t}
-                type="button"
-                onClick={() => setTime(t)}
-                data-testid={`consultation-time-${t}`}
-                className={`px-3 py-2.5 rounded-xl text-sm transition-all ${
-                  time === t
-                    ? "bg-[#003B5C] text-white"
-                    : "bg-[#F3F2EE] text-[#1C1917] hover:bg-[#E7E5E4]"
-                }`}
-              >
-                {t}
-              </button>
-            ))}
-          </div>
-          <div className="mt-6 space-y-3">
-            <input data-testid="consultation-name" value={data.full_name} onChange={(e) => setData({ ...data, full_name: e.target.value })} className={inputClass} placeholder="Full name *" />
-            <input data-testid="consultation-email" type="email" value={data.email} onChange={(e) => setData({ ...data, email: e.target.value })} className={inputClass} placeholder="Email *" />
-            <input data-testid="consultation-phone" value={data.phone} onChange={(e) => setData({ ...data, phone: e.target.value })} className={inputClass} placeholder="Phone *" />
-            <input data-testid="consultation-topic" value={data.topic} onChange={(e) => setData({ ...data, topic: e.target.value })} className={inputClass} placeholder="Topic (optional)" />
-          </div>
-        </div>
+      <h2 className="font-display text-3xl text-[#003B5C] mb-2">{t("cons.title")}</h2>
+      <p className="text-[#57534E] text-sm mb-6 flex items-center gap-2">
+        <CalIcon className="w-4 h-4 text-[#F59E0B]" />
+        Sincronizado com Google Calendar + link de Google Meet automático
+      </p>
+      <div className="rounded-2xl border border-[#E7E5E4] overflow-hidden bg-[#F9F8F6]">
+        <iframe
+          src={GOOGLE_BOOKING_LINK}
+          title="Agende sua consultoria gratuita"
+          data-testid="google-calendar-embed"
+          style={{ border: 0 }}
+          width="100%"
+          height="700"
+          frameBorder="0"
+        />
       </div>
-
-      <button
-        onClick={submit}
-        disabled={loading}
-        data-testid="consultation-submit"
-        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-[#F59E0B] text-[#003B5C] font-semibold hover:bg-[#fbbf24] disabled:opacity-60"
-      >
-        {loading ? "Booking..." : "Book free consultation"} <ArrowRight className="w-4 h-4" />
-      </button>
     </div>
   );
 }
